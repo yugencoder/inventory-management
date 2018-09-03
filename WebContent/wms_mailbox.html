@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>iTOOLs | Mailbox</title>
+    
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse tooltip-demo" >
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element"> <span>
+                        <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                         </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">WMS Admin</strong>
+                         </span>                           
+                         <span class="text-muted text-xs block">Warehouse Manager,</span> </span> </a>
+                         <span class="m-r-sm text-muted welcome-message warehouse-info" style="font-style: italic;margin-top: 20px"></span>
+                </div>
+                <div class="logo-element">
+                    iTools
+                </div>
+            </li>
+            <li>
+                <a href="requests.html"><i class="fa fa-chevron-right"></i> <span class="nav-label">Requests Received</span><span class="label label-warning pull-right requests-side-notify" data-toggle="tooltip" data-placement="right" title="Shows the Number of Open Requests"></span></a>
+            </li>
+            <li>
+                <a href="wms_returns.html"><i class="fa fa-chevron-right"></i> <span class="nav-label">Return Requests</span><span class="label label-warning pull-right wms_returns-side-notify"  data-toggle="tooltip" data-placement="right" title="Shows the Number of Open Return Requests"></span></a>
+            </li>
+            <li>
+                <a href="stocks.html"><i class="fa fa-chevron-right"></i> <span class="nav-label">View Stocks</span></a>
+            </li>
+            <li>
+                <a href="management.html"><i class="fa fa-chevron-right"></i> <span class="nav-label">Stock Management</span></a>
+            </li>
+            <li>
+                <a href="transfer.html"><i class="fa fa-chevron-right"></i> <span class="nav-label">Transfer Stocks</span></a>
+            </li>
+            <li>
+                <a href="warehouse_occupancy.html"><i class="fa fa-chevron-right"></i> <span class="nav-label">Warehouse Occupancy</span></a>
+            </li>                 
+            <li class="active">
+                <a href="wms_mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Messages</span><span class="label label-warning pull-right mail-side-notify" data-toggle="tooltip" data-placement="right" title="Shows the Number of Unread Messages"></span></a>
+            </li>
+            </ul>
+
+            </ul>
+
+        </div>
+    </nav>
+    <div id="page-wrapper" class="gray-bg">
+    <div class="row border-bottom">
+    <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header tooltip-demo">
+                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#" data-toggle="tooltip" data-placement="right" title="Click here to minimize sidebar"><i class="fa fa-bars"></i> </a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right tooltip-demo">
+                <li>
+                    <span class="m-r-sm text-muted welcome-message" style="font-style: italic"><a href="index.html" data-toggle="tooltip" data-placement="left" title="Go to Login Page">iTOOLs - Inventory Management Tool</a></span>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                    <i class="fa fa-envelope" data-toggle="tooltip" data-placement="bottom" title="View Messages"></i>  <span class="label label-warning new-messages"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                    </ul>
+                </li>
+               <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" id="Alerts">
+                        <i class="fa fa-bell" data-toggle="tooltip" data-placement="bottom" title="Set Reminder"></i>
+                    </a>               
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle"
+                    data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>
+                        Settings <span class="caret"></span></a>
+                    <ul class="dropdown-menu">                      
+                        <li><a onclick="SESSION.logout();"><span
+                                class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        <li><a onclick="window.location.reload(true);"><span
+                                class="glyphicon glyphicon-refresh"></span> Reload</a></li>
+                        <li><a onclick="DB.init();"><span
+                                class="glyphicon glyphicon-repeat"></span> Init DB</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a onclick="DB.remove();"><span
+                                class="glyphicon glyphicon-trash"></span> Delete DB</a></li>
+                    </ul>
+                </li>
+            </ul>
+    </nav>
+        </div>
+
+        <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-lg-12 animated fadeInRight">
+            <div class="mail-box-header">
+                <h2>
+                    Messages<span class="new-messages-inbox"> (0)</span>
+                </h2>
+            <div class="mail-box tooltip-demo">
+                        <div class="ibox-title">
+                        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;                
+                        <input type="checkbox" class="i-checks checkall" id="check-all">    
+                        &nbsp;&nbsp;&nbsp;&nbsp;          
+                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</button>
+                        <button class="btn btn-white btn-sm mark_read" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button>
+                        <button class="btn btn-white btn-sm delete" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>
+                        </div>
+                        <div class="ibox-content">
+
+                            <div class="table-responsive">
+                                <table class="table table-hover table-mail">
+                                    <thead class="hide-head">
+                                        <th>head1</th>
+                                        <th>head1</th>
+                                        <th>head1</th>
+                                        <th>head1</th>
+                                        <th>head1</th>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                        
+                            </div>
+
+                        </div>
+            </div>
+            </div>
+            </div>
+
+        </div>
+        </div>
+        
+        </div>
+        </div>
+    <!-- Modal  -->
+    <div class="modal fade" id="reminderModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog  modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Add / View Reminders</h4>
+            </div>
+            <div class="modal-body">
+
+                <div>
+                    <div class="form-inline">
+                        <input type="text" placeholder="Subject.." class="form-control input-sm alert-subject" style ="width:250px;">
+                        <input type="text" placeholder="Repeat (Days)" class="form-control input-sm alert-days" style ="width:120px;">
+                        <button class="btn btn-primary btn-sm add-alert" data-toggle="tooltip" data-placement="left" title="Add a Reminder "><i class="fa fa-bell"></i> Add a Reminder</button>
+                        
+                        <button class="btn btn-danger btn-sm delete-alert pull-right" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>                                
+                    </div>
+                </div>
+
+                </br></br>
+                <div>
+
+                    <table class="table table-hover table-alerts">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" class="i-checks checkall select-all-alerts" id="check-all"></th>
+                            <th>S.No</th>
+                            <th>Subject</th>
+                            <th>Remind Every(Days)</th>
+                            <th>Next Reminder Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody-alerts">
+                    </tbody>`
+                    </table>
+
+
+                </div>                            
+
+            <!-- End of Modal Body -->
+            </div>
+            <div class="modal-footer">
+               
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+     </div><!-- /.modal -->
+    <!-- End of Modal  -->  
+    
+    <!-- Mainly scripts -->
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="js/plugins/dataTables/datatables.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+    <script src="js/plugins/toastr/toastr.min.js"></script>
+    <script src="js/plugins/iCheck/icheck.min.js"></script>
+
+    <!-- javascript libs -->
+    <script src="lib/alasql.js"></script>
+    <script src="lib/purl.js"></script>
+    
+
+    <!-- javascript plugins -->
+    <script src="lib/jquery.tablesorter.js"></script>
+    <script src="lib/jquery.tablesorter.widgets.js"></script>
+    <script src="lib/jquery.tablesorter.pager.js"></script>
+    <script src="lib/widget-editable.js"></script>
+    <script src="lib/moment.js"></script>
+
+
+    <!-- javascript scripts -->
+    <script src="js/xtra/db.js"></script>
+
+    <!-- Extra -->
+    <script src="js/xtra/wms_mailbox.js"></script>
+
+    <script>
+
+    </script>
+</body>
+
+</html>

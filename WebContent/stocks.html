@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>iTOOLs | Stocks Page</title>
+
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+
+    <!-- xtra -->
+    <!-- css files -->
+    <link rel="stylesheet" href="css/xtra/theme.bootstrap.css">
+    <link href="css/xtra/pad.css" rel="stylesheet">      
+
+
+</head>
+
+<body class="">
+
+    <div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse tooltip-demo" >
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element"> <span>
+                        <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                         </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">WMS Admin</strong>
+                         </span> 
+                          <span class="text-muted text-xs block">Warehouse Manager,</span> </span> </a>
+                          <span class="m-r-sm text-muted welcome-message warehouse-info" style="font-style: italic;margin-top: 20px"></span>
+                </div>
+                <div class="logo-element">
+                    iTools
+                </div>
+            </li>
+            <li>
+                <a href="requests.html"><i class="fa fa-chevron-right"></i> <span class="nav-label">Requests Received</span><span class="label label-warning pull-right requests-side-notify" data-toggle="tooltip" data-placement="right" title="Shows the Number of Open Requests"></span></a>
+            </li>
+            <li>
+                <a href="wms_returns.html"><i class="fa fa-chevron-right"></i> <span class="nav-label">Return Requests</span><span class="label label-warning pull-right wms_returns-side-notify"  data-toggle="tooltip" data-placement="right" title="Shows the Number of Open Return Requests"></span></a>
+            </li>
+            <li class="active">
+                <a href="stocks.html"><i class="fa fa-chevron-right"></i> <span class="nav-label">View Stocks</span></a>
+            </li>
+            <li>
+                <a href="management.html"><i class="fa fa-chevron-right"></i> <span class="nav-label">Stock Management</span></a>
+            </li>
+            <li>
+                <a href="transfer.html"><i class="fa fa-chevron-right"></i> <span class="nav-label">Transfer Stocks</span></a>
+            </li>
+            <li>
+                <a href="warehouse_occupancy.html"><i class="fa fa-chevron-right"></i> <span class="nav-label">Warehouse Occupancy</span></a>
+            </li>                 
+            <li>
+                <a href="wms_mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Messages</span><span class="label label-warning pull-right mail-side-notify" data-toggle="tooltip" data-placement="right" title="Shows the Number of Unread Messages"></span></a>
+            </li>
+
+        </ul>
+
+        </div>
+    </nav>
+    <div id="page-wrapper" class="gray-bg">
+    <div class="row border-bottom">
+    <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header tooltip-demo">
+                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#" data-toggle="tooltip" data-placement="right" title="Click here to minimize sidebar"><i class="fa fa-bars"></i> </a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right tooltip-demo">
+                <li>
+                    <span class="m-r-sm text-muted welcome-message" style="font-style: italic"><a href="index.html" data-toggle="tooltip" data-placement="left" title="Go to Login Page">iTOOLs - Inventory Management Tool</a></span>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                    <i class="fa fa-envelope" data-toggle="tooltip" data-placement="bottom" title="View Messages"></i>  <span class="label label-warning new-messages"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                    </ul>
+                </li>
+                  <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" id="Alerts">
+                        <i class="fa fa-bell" data-toggle="tooltip" data-placement="bottom" title="Set Reminder"></i>
+                    </a>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle"
+                    data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>
+                        Settings <span class="caret"></span></a>
+                    <ul class="dropdown-menu">                      
+                        <li><a onclick="SESSION.logout();"><span
+                                class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        <li><a onclick="window.location.reload(true);"><span
+                                class="glyphicon glyphicon-refresh"></span> Reload</a></li>
+                        <li><a onclick="DB.init();"><span
+                                class="glyphicon glyphicon-repeat"></span> Init DB</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a onclick="DB.remove();"><span
+                                class="glyphicon glyphicon-trash"></span> Delete DB</a></li>
+                    </ul>
+                </li>
+            </ul>
+    </nav>
+        </div>
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-sm-4">
+                    <h2>Stocks</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="active">
+                            <strong>View Stocks</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-sm-8">
+                    <div class="title-action">
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrapper wrapper-content">
+<!-- ______________________________________________________________________________________________________ -->
+
+        <div class="tabs-container">
+            <ul class="nav nav-tabs">
+
+                <li id="All-Stocks-Tab" class="active"><a data-toggle="tab" href="#All-Stocks">All Stocks</a></li>
+                <li id="Slow-Stocks-Tab" class=""><a data-toggle="tab" href="#Slow-Stocks">Slow Moving Stocks</a></li>
+                <li id="Fast-Stocks-Tab" class=""><a data-toggle="tab" href="#Fast-Stocks">Fast Moving Stocks</a></li>
+
+            </ul>
+            <div class="tab-content">
+                <div id="All-Stocks" class="tab-pane active">
+                    <div class="panel-body tooltip-demo">
+
+                        <div class="panel-group">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <a data-toggle="collapse" href="#collapse-1"><span class="glyphicon glyphicon-cog"></span> Set Thresholds</a>
+                            </div>
+                            <div id="collapse-1" class="panel-collapse collapse">
+                              <div class="panel-body ">
+                                        <div class="col-md-4">
+                                            <div class="panel panel-primary">
+                                                <div class="panel-heading">
+                                                    <span> Fast/Slow Moving Stocks</span>
+                                                    <span class="pull-right" style="cursor: pointer;" data-toggle="tooltip" data-placement="right" title="Click to see Info"><i class="fa fa-info-circle" style="font-size:1.5em;" data-container="body" data-toggle="popover" data-placement="top" data-content="Stocks are classified as either Slow-Moving or Fast-Moving based on their previous months sales value. The cut-offs being the value mentioned below."></i></a></span>
+                                                </div>
+                                                <div class="panel-body">
+                                                     <form class="form-horizontal">
+                                                      <div class="form-group">
+                                                    <label for="slow-moving" class="col-sm-5 control-label">Slow Moving</label>
+                                                      <div class="form-group col-sm-7">
+                                                        <div class="input-group">
+                                                          <div class="input-group-addon" style="color: #1ab394;"><=</div>
+                                                          <input type="text" class="form-control" id="slow-moving" placeholder="Slow Threshold">
+                                                        <div class="input-group-addon" style="font-size:0.8em;color: #1ab394;">Units</div>
+
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                      <div class="form-group">
+                                                    <label for="fast-moving" class="col-sm-5 control-label">Fast Moving</label>
+                                                      <div class="form-group col-sm-7">
+                                                        <div class="input-group">
+                                                          <div class="input-group-addon" style="color: #1ab394;">>=</div>
+                                                          <input type="text" class="form-control" id="fast-moving" placeholder="Fast Threshold ">
+                                                        <div class="input-group-addon" style="font-size:0.8em;color: #1ab394;">Units</div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="panel panel-primary">
+                                                <div class="panel-heading">
+                                                    <span> Critical/Safety Stocks</span>
+                                                    <span class="pull-right" style="cursor: pointer;" data-toggle="tooltip" data-placement="right" title="Click to see Info"><i class="fa fa-info-circle" style="font-size:1.5em;" data-container="body" data-toggle="popover" data-placement="top" data-content="Critical Limit is the minimum stock amount to be maintained, falling below which an automatic reorder request for that particular stock is sent to the procurement team. Here, we define critical limits for both slow-moving and fast-moving stocks as a multiple of last months sales value."></i></a></span>
+                                                </div>
+                                                <div class="panel-body">
+                                                 <form class="form-horizontal">
+                                                  <div class="form-group">
+                                                <label for="slow-moving-critical" class="col-sm-5 control-label">Slow Moving</label>
+                                                  <div class="form-group col-sm-7">
+                                                    <div class="input-group">
+                                                      <input type="text" class="form-control" id="slow-moving-critical" placeholder="Val">
+                                                    <div class="input-group-addon" style="font-size:0.8em;color: #1ab394;"> x Prev Months</div>  
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                  <div class="form-group">
+                                                <label for="fast-moving-critical" class="col-sm-5 control-label">Fast Moving</label>
+                                                  <div class="form-group col-sm-7">
+                                                    <div class="input-group">
+                                                      <input type="text" class="form-control" id="fast-moving-critical" placeholder="Val">
+                                                      <div class="input-group-addon" style="font-size:0.8em;color: #1ab394;"> x Prev Months</div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="panel panel-primary">
+                                                <div class="panel-heading">
+                                                    <span> Reorder Value</span>
+                                                    <span class="pull-right" style="cursor: pointer;" data-toggle="tooltip" data-placement="right" title="Click to see Info"><i class="fa fa-info-circle" style="font-size:1.5em;" data-container="body" data-toggle="popover" data-placement="top" data-content="Re-Order Value is the quantity of stocks that needs to be ordered when the available stock quantity falls below the critical limit. Re-Order value is defined for both fast moving and slow moving stocks as a multiple of last months sales value."></i></a></span>
+                                                </div>
+                                                <div class="panel-body">
+                                                     <form class="form-horizontal">
+                                                      <div class="form-group">
+                                                    <label for="slow-moving-reorder" class="col-sm-5 control-label">Slow Moving</label>
+                                                      <div class="form-group col-sm-7">
+                                                        <div class="input-group">
+                                                          <input type="text" class="form-control" id="slow-moving-reorder" placeholder="Val">
+                                                        <div class="input-group-addon" style="font-size:0.8em;color: #1ab394;"> x Prev Months </div>  
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                      <div class="form-group">
+                                                    <label for="fast-moving-reorder" class="col-sm-5 control-label">Fast Moving</label>
+                                                      <div class="form-group col-sm-7">
+                                                        <div class="input-group">
+                                                          <input type="text" class="form-control" id="fast-moving-reorder" placeholder="Val">
+                                                          <div class="input-group-addon" style="font-size:0.8em;color: #1ab394;"> x Prev Months</div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                          <label style="margin-top:12px"><medium class="text-navy">Last Months Average Sales : 4 Units</medium></label>
+                                         <button type="submit" class="update-misc-button btn btn-primary pull-right" style="margin-top:12px">Apply Changes</button>
+                                </div>
+
+
+                            </div><!-- Collapse -->
+                          </div>
+                        </div>
+
+                        <input type="text"
+                                    class="search pull-right btn-sm" placeholder="Search Table" type="search" data-column="all"  style="margin:4px; width:300px">
+                        <button class="toggle btn btn-xs" type="button" style="margin-top:20px;"><span class="glyphicon glyphicon-adjust" style="font-size: 10px;"></span>&nbsp;Enable Filters</button>
+                        <button class="reset-filters btn btn-xs" type="button" style="margin-top:20px;display:none"><span class="glyphicon glyphicon-repeat" style="font-size: 10px;"></span>&nbsp;Reset Filters
+                        </button>
+                        <table id="table-all-stocks" class="table table-striped table-condensed">
+                            <thead id="thead-all-stocks">
+                                <tr>
+                                    <th>Item ID</th>
+                                    <th>Quantity</th>
+                                    <th>Critical Limit</th>
+                                    <th>Reorder Value</th>
+                                    <th>Last Month Sales</th>                                   
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-all-stocks"></tbody>
+                        </table>
+                        <div id="pager-all-stocks" class="pager" style="text-align:center; display:none">
+                        <form>
+                            <img src="img/first.png" class="first"/>
+                            <img src="img/prev.png" class="prev"/>
+                            <input type="text" class="pagedisplay"/>
+                            <img src="img/next.png" class="next"/>
+                            <img src="img/last.png" class="last"/>
+                            <select class="pagesize">
+                                <option selected="selected" value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="40">40</option>
+                                <option value="50">50</option>
+                                <!-- <option value="100">100</option>
+                                <option value="200">200</option> -->
+                            </select>
+                        </form>
+                        </div> 
+
+                    </div>
+                </div>
+
+                <div id="Slow-Stocks" class="tab-pane">
+                    <div class="panel-body">
+                        <input type="text"
+                                    class="search pull-right btn-sm" placeholder="Search Table" type="search" data-column="all"  style="margin:4px; width:300px">
+                        <button class="toggle btn btn-xs" type="button" style="margin-top:20px;"><span class="glyphicon glyphicon-adjust" style="font-size: 10px;"></span>&nbsp;Enable Filters</button>
+                        <button class="reset-filters btn btn-xs" type="button" style="margin-top:20px;display:none"><span class="glyphicon glyphicon-repeat" style="font-size: 10px;"></span>&nbsp;Reset Filters</button>
+                        <table id="table-slow-stocks" class="table table-striped table-condensed">
+                            <thead id="thead-slow-stocks">
+                                <tr>
+                                    <th>Item ID</th>
+                                    <th>Quantity</th>
+                                    <th>Critical Limit</th>
+                                    <th>Reorder Value</th>
+                                    <th>Last Month Sales</th>                                   
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-slow-stocks"></tbody>
+                        </table>
+                        <div id="pager-slow-stocks" class="pager" style="text-align:center; display:none">
+                        <form>
+                            <img src="img/first.png" class="first"/>
+                            <img src="img/prev.png" class="prev"/>
+                            <input type="text" class="pagedisplay"/>
+                            <img src="img/next.png" class="next"/>
+                            <img src="img/last.png" class="last"/>
+                            <select class="pagesize">
+                                <option selected="selected" value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="40">40</option>
+                                <option value="50">50</option>
+                                <!-- <option value="100">100</option>
+                                <option value="200">200</option> -->
+                            </select>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="Fast-Stocks" class="tab-pane">
+                    <div class="panel-body">
+                        <input type="text"
+                                    class="search pull-right btn-sm" placeholder="Search Table" type="search" data-column="all"  style="margin:4px; width:300px">
+                        <button class="toggle btn btn-xs" type="button" style="margin-top:20px;"><span class="glyphicon glyphicon-adjust" style="font-size: 10px;"></span>&nbsp;Enable Filters</button>
+                        <button class="reset-filters btn btn-xs" type="button" style="margin-top:20px;display:none"><span class="glyphicon glyphicon-repeat" style="font-size: 10px;"></span>&nbsp;Reset Filters</button>
+                        <table id="table-fast-stocks" class="table table-striped table-condensed">
+                            <thead id="thead-fast-stocks">
+                                <tr>
+                                        <th>Item ID</th>
+                                        <th>Quantity</th>
+                                        <th>Critical Limit</th>
+                                        <th>Reorder Value</th>
+                                        <th>Last Month Sales</th>                                   
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-fast-stocks"></tbody>
+                            </table>
+                            <div id="pager-fast-stocks" class="pager" style="text-align:center; display:none">
+                            <form>
+                                <img src="img/first.png" class="first"/>
+                                <img src="img/prev.png" class="prev"/>
+                                <input type="text" class="pagedisplay"/>
+                                <img src="img/next.png" class="next"/>
+                                <img src="img/last.png" class="last"/>
+                                <select class="pagesize">
+                                    <option selected="selected" value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="40">40</option>
+                                    <option value="50">50</option>
+                                    <!-- <option value="100">100</option>
+                                    <option value="200">200</option> -->
+                                </select>
+                            </form>
+                            </div>                    
+                    </div>
+                </div>                                                
+            </div>
+        </div>            
+<!-- ______________________________________________________________________________________________________ -->
+            </div>
+    
+        </div>
+        </div>
+    <!-- Modal  -->
+    <div class="modal fade" id="reminderModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog  modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Add / View Reminders</h4>
+            </div>
+            <div class="modal-body">
+
+                <div>
+                    <div class="form-inline">
+                        <input type="text" placeholder="Subject.." class="form-control input-sm alert-subject" style ="width:250px;">
+                        <input type="text" placeholder="Repeat (Days)" class="form-control input-sm alert-days" style ="width:120px;">
+                        <button class="btn btn-primary btn-sm add-alert" data-toggle="tooltip" data-placement="left" title="Add a Reminder "><i class="fa fa-bell"></i> Add a Reminder</button>
+                        
+                        <button class="btn btn-danger btn-sm delete-alert pull-right" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>                                
+                    </div>
+                </div>
+                </br></br>
+                <div>
+
+                    <table class="table table-hover table-alerts">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" class="i-checks checkall select-all-alerts" id="check-all"></th>
+                            <th>S.No</th>
+                            <th>Subject</th>
+                            <th>Remind Every(Days)</th>
+                            <th>Next Reminder Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody-alerts">
+                    </tbody>`
+                    </table>
+
+
+                </div>                            
+
+            <!-- End of Modal Body -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+     </div><!-- /.modal -->
+    <!-- End of Modal  -->  
+    
+    <!-- Mainly scripts -->
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+    <script src="js/plugins/toastr/toastr.min.js"></script>
+    <script src="js/plugins/iCheck/icheck.min.js"></script>
+
+<!-- xtra -->
+<!-- javascript libs -->
+    <script src="lib/alasql.js"></script>
+    <script src="lib/purl.js"></script>
+    
+    <!-- javascript plugins -->
+    <script src="lib/jquery.tablesorter.js"></script>
+    <script src="lib/jquery.tablesorter.widgets.js"></script>
+    <script src="lib/jquery.tablesorter.pager.js"></script>
+    <script src="lib/widget-editable.js"></script>
+    <script src="lib/moment.js"></script>
+
+
+    <!-- javascript scripts -->
+    <script src="js/xtra/db.js"></script>
+    <script src="js/xtra/stocks.js"></script>
+
+</body>
+
+</html>

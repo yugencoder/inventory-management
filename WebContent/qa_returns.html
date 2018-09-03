@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>iTOOls | Requests Page</title>
+
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+
+    <!-- xtra -->
+    <!-- css files -->
+    <link rel="stylesheet" href="css/xtra/theme.bootstrap.css">
+    <link href="css/xtra/pad.css" rel="stylesheet">      
+
+    <!-- Chart Library -->
+    <script src="lib/Chart.bundle.js"></script>
+    <script src="lib/utils.js"></script>
+
+</head>
+
+<body class="">
+
+    <div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse tooltip-demo" >
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element"> <span>
+                        <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                         </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">PO-QA Admin</strong>
+                         </span> <span class="text-muted text-xs block">Procurement Quality Inspector</span> </span> </a>
+                </div>
+                <div class="logo-element">
+                    iTools
+                </div>
+            </li>
+
+            <li>
+                <a href="qa_received.html"><i class="fa fa-chevron-right"></i> <span class="nav-label">Requests Received</span><span class="label label-warning pull-right received-side-notify" data-toggle="tooltip" data-placement="right" title="Shows the Number of Open Requests"></span></a>
+            </li>
+            <li class="active">
+                <a href="qa_returns.html"><i class="fa fa-chevron-right"></i> <span class="nav-label">Return Requests</span><span class="label label-warning pull-right returns-side-notify"  data-toggle="tooltip" data-placement="right" title="Shows the Number of Open Return Requests"></span></a>
+            </li>
+            <li>
+                <a href="qa_mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Messages</span><span class="label label-warning pull-right mail-side-notify" data-toggle="tooltip" data-placement="right" title="Shows the Number of Unread Messages"></span></a>
+            </li>
+      </ul>
+
+        </div>
+    </nav>
+    <div id="page-wrapper" class="gray-bg">
+    <div class="row border-bottom">
+    <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header tooltip-demo">
+                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#" data-toggle="tooltip" data-placement="right" title="Click here to minimize sidebar"><i class="fa fa-bars"></i> </a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right tooltip-demo">
+                <li>
+                    <span class="m-r-sm text-muted welcome-message" style="font-style: italic"><a href="index.html" data-toggle="tooltip" data-placement="left" title="Go to Login Page">iTOOLs - Inventory Management Tool</a></span>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                    <i class="fa fa-envelope" data-toggle="tooltip" data-placement="bottom" title="View Messages"></i>  <span class="label label-warning new-messages"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                    </ul>
+                </li>
+
+                <li class="dropdown"><a href="#" class="dropdown-toggle"
+                    data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>
+                        Settings <span class="caret"></span></a>
+                    <ul class="dropdown-menu">                      
+                        <li><a onclick="SESSION.logout();"><span
+                                class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        <li><a onclick="window.location.reload(true);"><span
+                                class="glyphicon glyphicon-refresh"></span> Reload</a></li>
+                        <li><a onclick="DB.init();"><span
+                                class="glyphicon glyphicon-repeat"></span> Init DB</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a onclick="DB.remove();"><span
+                                class="glyphicon glyphicon-trash"></span> Delete DB</a></li>
+                    </ul>
+                </li>
+            </ul>
+    </nav>
+        </div>
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-sm-4">
+                    <h2>Received Return-Goods</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="active">
+                            <strong>Manage Received Return-Goods</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-sm-8">
+                    <div class="title-action">
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrapper wrapper-content tooltip-demo">
+<!-- ______________________________________________________________________________________________________ -->
+
+
+                <input type="text"
+                                class="search pull-right btn-sm" placeholder="Search Table" type="search" data-column="all"  style="margin:4px; width:300px">
+                <button class="toggle btn btn-xs" type="button" style="margin:0;"><span class="glyphicon glyphicon-adjust" style="font-size: 10px;"></span>&nbsp;Enable Filters</button>
+                <button class="reset-filters btn btn-xs" type="button" style="margin:0;display:none"><span class="glyphicon glyphicon-repeat" style="font-size: 10px;"></span>&nbsp;Reset Filters</button>      
+                <table id="table-returns" class="table table-striped table-condensed">
+                    <thead id="thead-returns">
+                        <tr>
+                            <th>Return_ID</th>
+                            <th>Order_ID</th>
+                            <th>Supplier_ID</th>
+                            <th>Quantity</th>
+                            <th>Verification</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-returns"></tbody>
+                </table>
+                <div id="pager-returns" class="pager" style="text-align:center; display:none">
+                <form>
+                    <img src="img/first.png" class="first"/>
+                    <img src="img/prev.png" class="prev"/>
+                    <input type="text" class="pagedisplay"/>
+                    <img src="img/next.png" class="next"/>
+                    <img src="img/last.png" class="last"/>
+                    <select class="pagesize">
+                        <option selected="selected" value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                        <!-- <option value="100">100</option>
+                        <option value="200">200</option> -->
+                    </select>
+                </form>
+                </div>
+<!-- ______________________________________________________________________________________________________ -->
+            </div>
+
+        </div>
+        </div>
+
+    <!-- Modal  -->
+    <div class="modal fade" id="commentsModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog  modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Input Comments Regarding the Issue</h4>
+            </div>
+            <div class="modal-body">
+            <!-- Start of Modal Body -->
+                <span id="comments-goods_id" style="display:none"></span>
+                <span id="comments-order_id" style="display:none" ></span>
+                <span id="comments-supplier_id" style="display:none" ></span> 
+
+                
+            <div class="form-group">
+                <label for="comment-text" class="control-label">Comments:</label>
+                <textarea class="form-control" id="comment-text"></textarea>
+            </div>
+
+            <!-- End of Modal Body -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary save-comments">Save</button>
+            </div>            
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+     </div><!-- /.modal -->
+    <!-- End of Modal  -->
+    <!-- Mainly scripts -->
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+    <script src="js/plugins/toastr/toastr.min.js"></script>
+
+<!-- xtra -->
+<!-- javascript libs -->
+    <script src="lib/alasql.js"></script>
+    <script src="lib/purl.js"></script>
+    
+    <!-- javascript plugins -->
+    <script src="lib/jquery.tablesorter.js"></script>
+    <script src="lib/jquery.tablesorter.widgets.js"></script>
+    <script src="lib/jquery.tablesorter.pager.js"></script>
+    <script src="lib/widget-editable.js"></script>
+    <script src="lib/moment.js"></script>
+    <link href="css/xtra/bootstrap-editable.css" rel="stylesheet"/>
+    <script src="lib/bootstrap-editable.min.js"></script>
+
+    <!-- javascript scripts -->
+    <script src="js/xtra/db.js"></script>
+    <script src="js/xtra/qa_returns.js"></script>
+
+</body>
+
+</html>

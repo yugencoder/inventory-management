@@ -1,0 +1,3 @@
+orders_id,supplier_id,parts_id,quantity,verification,status
+1,3,5,10,Awaiting,Closed
+2,5,1,20,Awaiting,Open

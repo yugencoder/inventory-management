@@ -1,0 +1,37 @@
+.tablesorter tbody > tr > td[contenteditable=true] {
+  border: 1px solid lightblue;
+}
+
+.tablesorter tbody > tr > td[contenteditable=true]:focus {
+  outline: #08f 1px solid;
+  background: #eee;
+  resize: none;
+}
+td.no-edit, span.no-edit {
+  background-color: rgba(230,191,153,0.5);
+}
+.focused {
+  color: blue;
+}
+td.editable_updated {
+  background-color: green;
+  color: white;
+}
+
+.input-group-addon{
+	background-color:#F3F3F4;
+}
+
+[contenteditable|="true"] {
+    text-decoration: none;
+    border: dashed 1px #0088cc;
+    background-color:#F3F3F4;
+}
+
+.tablesorter td > a {
+  /*modded*/
+  color: #337ab7;
+  text-decoration: none;
+  border-bottom: dashed 1px #0088cc;
+
+}

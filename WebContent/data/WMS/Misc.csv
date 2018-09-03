@@ -1,0 +1,2 @@
+id,slow_threshold,fast threshold,slow_critical,fast_critical,slow_reorder,fast_reorder,oldstock_low,oldstock_up,discount,deadstock,warehouse_perc,update_date,date_diff
+1,4,5,1,2,1,2,2012-05-27,2014-05-27,10-20,2011-05-27,90,28/11/2016,14

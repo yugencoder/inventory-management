@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- javascript libs -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>iTOOLs | Process Orders</title>
+
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    
+
+    <!-- xtra -->
+    <!-- css files -->
+    <link rel="stylesheet" href="css/xtra/theme.bootstrap.css">
+    <link href="css/xtra/pad.css" rel="stylesheet">      
+
+    <style>
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+    </style>
+<meta charset="utf-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="viewport" content="width=device-width">
+
+<title>iTOOLs</title>
+</head>
+<body class="gray-bg">
+ <div id="wrapper">
+        <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header tooltip-demo">
+                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#" data-toggle="tooltip" data-placement="right"><i class="fa fa-bars"></i> </a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right tooltip-demo">
+                <li>
+                    <span class="m-r-sm text-muted" style="font-style: italic"><a href="index.html" data-toggle="tooltip" data-placement="left" title="Go to Login Page">iTOOLs - Inventory Management Tool</a></span>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle"
+                    data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>
+                        Settings <span class="caret"></span></a>
+                    <ul class="dropdown-menu">                      
+                        <li><a onclick="SESSION.logout();"><span
+                                class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        <li><a onclick="window.location.reload(true);"><span
+                                class="glyphicon glyphicon-refresh"></span> Reload</a></li>
+                        <li><a onclick="DB.init();"><span
+                                class="glyphicon glyphicon-repeat"></span> Init DB</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a onclick="DB.remove();"><span
+                                class="glyphicon glyphicon-trash"></span> Delete DB</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+	<div class="container">
+       <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-sm-12">
+                    <h2>Process Orders</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="suppliers.html">Suppliers</a>
+                        </li>                      
+                        <li class="active">
+                            <strong>Orders</strong>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <span id ="modal-supplier_id" style="display:none"></span>
+            <span id ="modal-item_id" style="display:none"></span>
+            <!-- Abstract -->
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th>Supplier Name</th>
+                  <td id="supplier_name"></td>
+                  <th>Parts Name</th>
+                  <td id="parts_name"></td>
+                  <th>Category Name</th>
+                  <td id="category_name"></td>
+                </tr>
+                <tr>
+                  <th>Maker</th>
+                  <td id="maker"></td>
+                  <th>Price</th>
+                  <td id="price"></td>
+                  <th>Supplier Ratings</th>
+                  <td id="supplier_rating"></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="panel panel-default" style="margin-top: 20px;">
+              <div class="panel-heading">
+                <span class="glyphicon glyphicon-pencil"></span> Input Details
+              </div>
+              <div class="panel-body">
+                <div class="form">
+                  <input type="hidden" name="id">
+                  <div class="form-group">
+                    <label>Warehouse</label> 
+                      <select name="q1" class="form-control warehouse_id">
+                    </select>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Date</label> <input type="date" class="form-control order_date"
+                      name="date">
+                  </div>
+                  <label>Demand Predicted</label>
+                  <div class="form-inline tooltip-demo">
+                    <input class="quantity form-control" type="number" name="qty" value="0" placeholder="Quantity of Goods to Order">
+                    <button class="glyphicon glyphicon-stats btn btn-default view-chart" data-toggle="tooltip" data-placement="right" title="Click here to see Sales Charts"></button>
+                  </div>
+				<div id="chart-area" class="hidden" style="width:90%;">
+				    <canvas id="canvas"></canvas>
+				</div>                  
+                  <br>
+
+              <div class="form-group">
+                  <label>Amount Required</label>
+                  <div class="input-group">
+                    <div class="input-group-addon "><span class = "rqd"></span><span> (Demand) - </span><span class = "avl"></span><span> (Available)</span></div>
+                    <input class="quantity-rqd form-control" type="number" name="qty-rqd" value="0">
+                  </div>
+                </div>         
+                         
+                <div class="form-group">
+                    <label>Comment</label>
+                    <textarea class="form-control comments" name="memo"
+                      placeholder="Please Input Comment"></textarea>
+                  </div>
+          			<button type="button" class="btn btn-primary place_order pull-right">Place Order</button>		                  
+                </div>
+              </div>
+	        </div>
+
+  
+	</div>						
+</div>
+    <!-- Mainly scripts -->
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+    <script src="js/plugins/toastr/toastr.min.js"></script>
+   
+<!-- xtra -->
+<!-- javascript libs -->
+    <script src="lib/alasql.js"></script>
+    <script src="lib/purl.js"></script>
+    
+    <!-- javascript plugins -->
+    <script src="lib/jquery.tablesorter.js"></script>
+    <script src="lib/jquery.tablesorter.widgets.js"></script>
+    <script src="lib/jquery.tablesorter.pager.js"></script>
+    <script src="lib/moment.js"></script>
+    
+    <!-- javascript scripts -->
+    <script src="js/xtra/db.js"></script>
+    <script src="js/xtra/reorders.js"></script>
+
+    <!-- Chart Library -->
+    <script src="lib/Chart.bundle.js"></script>
+    <script src="lib/utils.js"></script>
+ 
+     <!-- Extrapolate JS -->
+    <script src="lib/extrapolate.js"></script>
+
+    <script src="js/xtra/process_order.js"></script>
+</body>
+</html>

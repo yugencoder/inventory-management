@@ -1,0 +1,61 @@
+supplier_id,item_id,supplier_name, price, supplier_rating
+1,27,Acme inc,1173,5
+2,12,Widget Corp,39121,7
+3,8,123 Warehousing,7999,5
+4,21,Demo Company,1497,10
+5,15,Smith and Co,8080,10
+6,27,Foo Bars,1116,10
+7,13,ABC Telecom,20005,8
+8,23,Fake Brothers,966,5
+9,4,QWERTY Logistics,4074,4
+10,25,Demo inc,1200,8
+11,18,Sample Company,8113,4
+12,20,Sample inc,1151,9
+13,22,Acme Corp,1506,10
+14,1,Allied Biscuit,30008,7
+15,14,Ankh-Sto Associates,26999,4
+16,22,Extensive Enterprise,1568,10
+17,17,Galaxy Corp,6392,8
+18,3,Globo-Chem,13745,6
+19,16,Mr Sparkle,19945,9
+20,3,Globex Corporation,13475,5
+21,6,LexCorp,6933,7
+22,21,LuthorCorp,1495,7
+23,11,North Central Positronics,4400,4
+24,7,Omni Consimer Products,8240,8
+25,13,Praxis Corporation,21665,7
+26,20,Sombra Corporation,1030,7
+27,20,Sto Plains Holdings,1195,4
+28,1,Tessier-Ashpool,30817,6
+29,17,Wayne Enterprises,6273,9
+30,19,Wentworth Industries,7654,10
+31,15,ZiffCorp,8144,7
+32,23,Bluth Company,928,8
+33,9,Strickland Propane,4229,5
+34,12,Thatherton Fuels,38999,9
+35,19,Three Waters,7587,8
+36,1,Water and Power,30293,9
+37,9,Western Gas & Electric,4385,7
+38,16,Mammoth Pictures,19530,8
+39,13,Mooby Corp,20531,5
+40,5,Gringotts,3230,5
+41,18,Thrift Bank,8125,10
+42,10,Flowers By Irene,7789,6
+43,2,Legitimate Businessmens,22309,8
+44,16,Osato Chemicals,19101,8
+45,13,Transworld Consortium,21406,5
+46,2,Universal Export,23765,6
+47,19,United Fried Chicken,7502,8
+48,24,Virtucon,986,7
+49,15,Kumatsu Motors,8043,7
+50,22,Keedsler Motors,1599,4
+51,23,Powell Motors,912,4
+52,17,Industrial Automation,6389,4
+53,4,Sirius Cybernetics ,4197,6
+54,23,US Robotics Mech Men,938,9
+55,26,Colonial Movers,1999,10
+56,5,Corellian Engg Corp,3200,7
+57,21,Incom Corporation,1418,9
+58,15,General Products,8018,8
+59,16,Leeding Engines Ltd,20460,7
+60,3,Blammo,13689,7

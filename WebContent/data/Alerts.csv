@@ -1,0 +1,6 @@
+id,subject,days,next_date,bo
+1,Check Warehouse Occupancy,7,31/01/2017,WMS1
+2,Manage Old Stocks,30,10/01/2017,WMS1
+3,Manage Dead Stocks,90,31/01/2017,WMS1
+4,Cycle Check - Stock Maintenance,30,31/01/2017,WMS_QA1
+5,Cycle Check - Rack Maintenance,30,31/01/2017,WMS_QA1

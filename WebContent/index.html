@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>iTOOLs | Login </title>
+
+     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+
+    <div>
+
+                <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+                    <ul class="nav navbar-top-links navbar-right">
+                            <li class="dropdown"><a href="#" class="dropdown-toggle"
+                            data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>
+                                Settings <span class="caret"></span></a>
+                            <ul class="dropdown-menu">                      
+                                <li><a onclick="window.location.reload(true);"><span
+                                        class="glyphicon glyphicon-refresh"></span> Reload</a></li>
+                                <li><a onclick="DB.init();"><span
+                                        class="glyphicon glyphicon-repeat"></span> Init DB</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a onclick="DB.remove();"><span
+                                        class="glyphicon glyphicon-trash"></span> Delete DB</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </nav>
+    
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div>
+
+                <h1 class="logo-name">iTOOLs</h1>
+
+            </div>
+            <h3>Welcome to iTOOLs</h3>
+            <p>One stop solution for Inventory Management.
+                <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
+            </p>
+            <!-- <form class="m-t" > -->
+            <div class="messages" style = "display:none">
+                <!-- Display Error Messages --> 
+                <span style="font-style:italic;color:red; font-size:1.2em">Incorrect Password!!</span>
+            </div>
+
+                <div class="form-group">
+                    <input id="username" class="form-control" placeholder="Username" required="">
+                </div>
+                <div class="form-group">
+                    <input id="password" type="password" class="form-control" placeholder="Password" required="">
+                </div>
+
+                <div class="form-group" >
+                  <select class="form-control m-b" id="business_operation">
+                        <option value="" selected disabled>Business Operation</option>
+                        <option>Procurement </option>
+                        <option>Warehouse Management </option>
+                        <option>Order Fulfillment </option>
+                  </select>
+                 </div>
+
+                <div class="form-group" id="wh-display" style = "display:none" >
+                    <select id="warehouse_location" class="form-control m-b" name="account">
+                        <!-- <option value ="" selected disabled>Warehouse Location</option>                     -->
+                        <option value = 1 >Bangalore </option>
+                        <option value = 2 >Hyderabad </option>
+                        <option value = 3 >Chennai </option>
+                        <option value = 4 >Delhi </option>
+                    </select>    
+                </div>            
+
+                <button type="submit" id="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+                <a href="#"><small>Forgot password?</small></a>
+                <p class="text-muted text-center"><small>Do not have an account?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="#register.html">Create an account</a>
+            <!-- </form> -->
+
+        </div>
+    </div>
+
+    </div>
+
+
+   <!-- Mainly scripts -->
+<!-- javascript libs -->
+    <script src="lib/jquery.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/alasql.js"></script>
+    <script src="lib/purl.js"></script>
+
+    <!-- javascript scripts -->
+    <script src="js/xtra/db.js"></script>
+    <script src="js/xtra/index.js"></script>
+</body>
+
+</html>

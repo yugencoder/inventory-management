@@ -1,0 +1,11 @@
+order_id,customer_id,item_id,quantity,order_date,city,status
+101,1,23,2,2016-12-15,Calicut,Open
+102,2,6,1,2016-12-15,Kanpur,Open
+103,10,1,8,2016-12-17,Bangalore,Open
+104,3,15,2,2016-12-15,Mumbai,Open
+105,4,3,1,2016-12-15,Pune,Open
+106,5,11,3,2016-12-16,Lucknow,Open
+107,6,2,3,2016-12-16,Trivandrum,Open
+108,7,1,2,2016-12-16,Kolkata,Open
+109,8,14,1,2016-12-17,Ahmedabad,Open
+110,9,19,1,2016-12-17,Hyderabad,Open

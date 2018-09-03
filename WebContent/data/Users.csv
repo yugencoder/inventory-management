@@ -1,0 +1,6 @@
+id,username,password,business_operation,operation
+1,po_admin,po_admin,Procurement,Procurement
+2,qa_admin,qa_admin,Procurement,Inspection
+3,wms_admin,wms_admin,Warehouse Management,Management
+4,wms_qa_admin,wms_qa_admin,Warehouse Management,Inspection
+5,of_admin,of_admin,Order Fulfillment,Management
